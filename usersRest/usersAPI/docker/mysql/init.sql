@@ -1,0 +1,20 @@
+CREATE TABLE Users (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    mail VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE Phones (
+    phone_id INT NOT NULL AUTO_INCREMENT,
+    number INT NOT NULL,
+    codCountry INT NOT NULL,
+    codCiudad INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (phone_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id)
+); 
